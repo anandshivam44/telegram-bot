@@ -28,12 +28,11 @@ def help_command(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('Help!')
 
 
+def url_formatting(directory_url:str):
+    http_string=url+directory_url.replace(" ", "%20")
+    return http_string
+
 def echo(update: Update, context: CallbackContext) -> None:
-    """Echo the user message."""
-    # print("\n\n")
-    # print(update)
-    # print("\n\n")
-    # print(context)
     reply = None
     if update.message.text is not None:
         reply = ""
@@ -44,10 +43,14 @@ def echo(update: Update, context: CallbackContext) -> None:
         htmlContent = r.content
         soup = BeautifulSoup(htmlContent, 'html.parser')
         list_ul = soup.find_all('ul', class_="nav menu menu-treemenu")
+        s:str
         for i in range(1, 11):
             # reply += list_ul[0].contents[i].find('span').getText()+"\n\n"
+            s=list_ul[0].contents[i].find('a').get('href')
+            if s[0]=='/':
+                s=url_formatting(s)
             reply += list_ul[0].contents[i].find('span').getText(
-            ) + "\n"+list_ul[0].contents[i].find('a').get('href')+"\n\n"
+            ) + "\n"+s+"\n\n"
         update.message.reply_text(reply)
 
 
