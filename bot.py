@@ -1,6 +1,5 @@
 import logging
 import requests
-import config
 from bs4 import BeautifulSoup
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
