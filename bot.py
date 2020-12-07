@@ -14,7 +14,7 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger(__name__)
-TOKEN=config.token
+TOKEN="1495878031:AAGk-J9jPA0RSsIhFVNUO1WHBdHgbE5eC2M"
 
 
 # Define a few command handlers. These usually take the two arguments update and
