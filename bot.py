@@ -5,7 +5,7 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 import os
 PORT = int(os.environ.get('PORT', 5000))
-url = 'http://bitsindri.ac.in/'
+url = 'http://bitsindri.ac.in'
 
 # Enable logging
 logging.basicConfig(
