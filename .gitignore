@@ -1,8 +1,2 @@
 config.py
-main.py
-output.txt
-telegram_bot_package.py
-teleport.py
-test_image.jpeg
 virtual-env_files
-database_test.py
