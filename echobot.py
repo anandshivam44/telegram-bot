@@ -45,7 +45,9 @@ def echo(update: Update, context: CallbackContext) -> None:
         soup = BeautifulSoup(htmlContent, 'html.parser')
         list_ul = soup.find_all('ul', class_="nav menu menu-treemenu")
         for i in range(1, 11):
-            reply += list_ul[0].contents[i].find('span').getText()+"\n\n"
+            # reply += list_ul[0].contents[i].find('span').getText()+"\n\n"
+            reply += list_ul[0].contents[i].find('span').getText(
+            ) + "\n"+list_ul[0].contents[i].find('a').get('href')+"\n\n"
         update.message.reply_text(reply)
 
 
@@ -67,13 +69,13 @@ def main():
     dispatcher.add_handler(MessageHandler(
         Filters.text & ~Filters.command, echo))
 
-
     # Start the Bot
     # updater.start_polling()
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
                           url_path=TOKEN)
-    updater.bot.setWebhook('https://obscure-savannah-01072.herokuapp.com/' + TOKEN)
+    updater.bot.setWebhook(
+        'https://obscure-savannah-01072.herokuapp.com/' + TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
